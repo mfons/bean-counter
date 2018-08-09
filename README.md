@@ -6,7 +6,7 @@
 >
 > See the list of Known Issues and TODOs, below, for updates.
 
-# PWA Starter Kit
+# PWA Starter Kit 
 
 This sample app is a starting point for building PWAs. Out of the box, the template
 gives you the following features:
