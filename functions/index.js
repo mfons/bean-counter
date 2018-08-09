@@ -19,7 +19,7 @@ const rendertronMiddleware = rendertron.makeMiddleware({
 });
 
 app.use((req, res, next) => {
-  req.headers['host'] = 'pwa-starter-kit-4225c.firebaseapp.com';
+  req.headers['host'] = 'bean-counter-9ac63.firebaseapp.com';
   return rendertronMiddleware(req, res, next);
 });
 
