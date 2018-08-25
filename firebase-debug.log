@@ -1,0 +1,52 @@
+[debug] [2018-08-25T16:04:20.304Z] ----------------------------------------------------------------------
+[debug] [2018-08-25T16:04:20.309Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Fons\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-08-25T16:04:20.310Z] CLI Version:   4.0.3
+[debug] [2018-08-25T16:04:20.310Z] Platform:      win32
+[debug] [2018-08-25T16:04:20.310Z] Node Version:  v9.7.1
+[debug] [2018-08-25T16:04:20.311Z] Time:          Sat Aug 25 2018 10:04:20 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-08-25T16:04:20.311Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-25T16:04:20.379Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-25T16:04:20.380Z] > authorizing via signed-in user
+[debug] [2018-08-25T16:04:20.385Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-25T16:04:20.386Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/uKcK-C9yhFqzdVcTnGEXl5ddTTiNQXWP_3ueQuGkNBi4F8brcMfjrhkB6vgqhZiz',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Aug 25 2018 10:04:20 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-08-25T16:04:20.699Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-25T16:04:20.757Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/bean-counter-9ac63  
+  
+ Sat Aug 25 2018 10:04:20 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-08-25T16:04:21.173Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-25T16:04:21.175Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/bean-counter-9ac63/tokens  
+  
+ Sat Aug 25 2018 10:04:21 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-08-25T16:04:21.528Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-25T16:04:21.529Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/bean-counter-9ac63  
+  
+ Sat Aug 25 2018 10:04:21 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-08-25T16:04:21.759Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\learning\polymer\polymer3\bean-counter'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-08-25T16:04:28.187Z] Fetching environment
+[debug] [2018-08-25T16:04:28.197Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/214006799666:getServerAppConfig  
+  
+ Sat Aug 25 2018 10:04:28 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-08-25T16:04:28.199Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/214006799666/clients/_:getWebAppConfig  
+  
+ Sat Aug 25 2018 10:04:28 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-08-25T16:04:28.474Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-25T16:04:28.474Z] Starting @google-cloud/functions-emulator
+[debug] [2018-08-25T16:04:28.633Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-08-25T16:04:34.492Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/bean-counter-9ac63/us-central1/app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /esm-bundled/index.html?_sw-precache=8ec0fbc9f34979ca90296c32fc0a6354 to local function app

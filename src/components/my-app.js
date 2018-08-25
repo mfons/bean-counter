@@ -60,6 +60,10 @@ class MyApp extends connect(store)(LitElement) {
         --app-drawer-selected-color: #78909C;
       }
 
+      .sc-hidden {
+          display: none;
+        } 
+
       app-header {
         position: fixed;
         top: 0;
@@ -177,6 +181,7 @@ class MyApp extends connect(store)(LitElement) {
         [main-title] {
           padding-right: 0px;
         }
+
       }
     </style>
 
@@ -192,6 +197,7 @@ class MyApp extends connect(store)(LitElement) {
         <a selected?="${_page === 'view1'}" href="/view1">View One</a>
         <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
         <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
+        <a selected?="${_page === 'login'}" href="/login">Login</a>
       </nav>
     </app-header>
 
@@ -202,6 +208,7 @@ class MyApp extends connect(store)(LitElement) {
         <a selected?="${_page === 'view1'}" href="/view1">View One</a>
         <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
         <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
+        <a selected?="${_page === 'login'}" href="/login">Login</a>
       </nav>
     </app-drawer>
 
@@ -210,6 +217,7 @@ class MyApp extends connect(store)(LitElement) {
       <my-view1 class="page" active?="${_page === 'view1'}"></my-view1>
       <my-view2 class="page" active?="${_page === 'view2'}"></my-view2>
       <my-view3 class="page" active?="${_page === 'view3'}"></my-view3>
+      <bc-login class="page" active?="${_page === 'login'}"></bc-login>
       <my-view404 class="page" active?="${_page === 'view404'}"></my-view404>
     </main>
 
@@ -218,7 +226,8 @@ class MyApp extends connect(store)(LitElement) {
     </footer>
 
     <snack-bar active?="${_snackbarOpened}">
-        You are now ${_offline ? 'offline' : 'online'}.</snack-bar>
+        You are now ${_offline ? 'offline' : 'online'}.
+    </snack-bar>
     `;
   }
 
@@ -238,6 +247,18 @@ class MyApp extends connect(store)(LitElement) {
     // See https://www.polymer-project.org/2.0/docs/devguide/gesture-events#use-passive-gesture-listeners
     setPassiveTouchGestures(true);
   }
+
+  // ready() {
+  //   const bcLogin = this.querySelector('bc-login');
+  //   bcLogin.addEventListener('on-auth', e => {
+  //     if (e.detail) {
+  //       scLogin.classList.add('sc-hidden');
+  //     }
+  //     else {
+  //       scLogin.classList.remove('sc-hidden');
+  //     }
+  //   });
+  // }
 
   _firstRendered() {
     installRouter((location) => store.dispatch(navigate(window.decodeURIComponent(location.pathname))));
