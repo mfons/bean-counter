@@ -1,5 +1,3 @@
-
-
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 
@@ -8,6 +6,11 @@ import { SharedStyles } from './shared-styles.js';
 
 class BcLogin extends PageViewElement {
 
+  static get properties() {
+    return {
+      user: { type: Object, value: { displayName : 'A. Yancovich'} }
+    };
+  }
 
   _render(props) {
     // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
@@ -22,8 +25,9 @@ class BcLogin extends PageViewElement {
       <section>
         <h2>Let's login folks!!</h2>
         <p>We can get our avitar and a uid to use in firestore and lots of fun stuff.</p>
+        <p>Logged in as:  ${props.user ? props.user.displayName : '...not logged in'}</p>
         <p>So we need a button or two...</p>
-        <button on-click="handleLoginClick">Login</button>
+        <button on-click="${(e) => this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}">Login</button>
       </section>
      `;
   }
@@ -32,13 +36,14 @@ class BcLogin extends PageViewElement {
       super.connectedCallback();
       this.auth = firebase.auth();
       this.auth.onAuthStateChanged(user => {
-        const event = new CustomEvent('on-auth', { detail: user, bubbles: true, composed: true});
+        const event = new CustomEvent('auth', { detail: user, bubbles: true, composed: true});
         this.user = user; // TODO declare user as a property...
         this.dispatchEvent(event);
       });
+      this.user = {displayName: "...not logged in"};
   }
 
-  handleLoginClick() {
+  handleLoginClick(e) {
       const google = new firebase.auth.GoogleAuthProvider();
       this.auth.signInWithRedirect(google);
   }

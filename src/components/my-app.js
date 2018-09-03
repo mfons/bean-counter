@@ -24,7 +24,8 @@ import {
   navigate,
   updateOffline,
   updateDrawerState,
-  updateLayout
+  updateLayout,
+  updateUser
 } from '../actions/app.js';
 
 // These are the elements needed by this element.
@@ -36,7 +37,7 @@ import { menuIcon } from './my-icons.js';
 import './snack-bar.js';
 
 class MyApp extends connect(store)(LitElement) {
-  _render({appTitle, _page, _drawerOpened, _snackbarOpened, _offline}) {
+  _render({appTitle, _page, _drawerOpened, _snackbarOpened, _offline, user}) {
     // Anything that's related to rendering should be done in here.
     return html`
     <style>
@@ -60,7 +61,7 @@ class MyApp extends connect(store)(LitElement) {
         --app-drawer-selected-color: #78909C;
       }
 
-      .sc-hidden {
+      .bc-hidden {
           display: none;
         } 
 
@@ -209,6 +210,7 @@ class MyApp extends connect(store)(LitElement) {
         <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
         <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
         <a selected?="${_page === 'login'}" href="/login">Login</a>
+        <div>Logged in as: ${user ? user.displayName : '...not logged in'} </div> 
       </nav>
     </app-drawer>
 
@@ -217,7 +219,7 @@ class MyApp extends connect(store)(LitElement) {
       <my-view1 class="page" active?="${_page === 'view1'}"></my-view1>
       <my-view2 class="page" active?="${_page === 'view2'}"></my-view2>
       <my-view3 class="page" active?="${_page === 'view3'}"></my-view3>
-      <bc-login class="page" active?="${_page === 'login'}"></bc-login>
+      <bc-login id="bcloginElementId" class="page" on-auth="${this.isLoggedIn}" active?="${_page === 'login'}"></bc-login>
       <my-view404 class="page" active?="${_page === 'view404'}"></my-view404>
     </main>
 
@@ -229,15 +231,32 @@ class MyApp extends connect(store)(LitElement) {
         You are now ${_offline ? 'offline' : 'online'}.
     </snack-bar>
     `;
+
+  
   }
 
-  static get properties() {
+  whosLoggedIn() { 
+    return this.user ? this.user.displayName : '';
+  }
+
+  isLoggedIn(e) {
+    if (e.detail) {
+      this.user = e.detail;
+      store.dispatch(updateUser(this.user));
+      //this.$.bcloginElementId.classList.add('bc-hidden');
+    }
+    else {
+      //this.$.bcloginElementId.classList.remove('bc-hidden');
+    }
+  }
+static get properties() {
     return {
       appTitle: String,
       _page: String,
       _drawerOpened: Boolean,
       _snackbarOpened: Boolean,
-      _offline: Boolean
+      _offline: Boolean,
+      user: Object
     }
   }
 
@@ -248,17 +267,10 @@ class MyApp extends connect(store)(LitElement) {
     setPassiveTouchGestures(true);
   }
 
-  // ready() {
-  //   const bcLogin = this.querySelector('bc-login');
-  //   bcLogin.addEventListener('on-auth', e => {
-  //     if (e.detail) {
-  //       scLogin.classList.add('sc-hidden');
-  //     }
-  //     else {
-  //       scLogin.classList.remove('sc-hidden');
-  //     }
-  //   });
-  // }
+  ready() {
+    super.ready();
+    this.user = {displayName: 'Not logged in yet...'};
+  }
 
   _firstRendered() {
     installRouter((location) => store.dispatch(navigate(window.decodeURIComponent(location.pathname))));
@@ -283,6 +295,7 @@ class MyApp extends connect(store)(LitElement) {
     this._offline = state.app.offline;
     this._snackbarOpened = state.app.snackbarOpened;
     this._drawerOpened = state.app.drawerOpened;
+    this.user = state.app.user;
   }
 }
 

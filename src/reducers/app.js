@@ -13,10 +13,11 @@ import {
   UPDATE_OFFLINE,
   OPEN_SNACKBAR,
   CLOSE_SNACKBAR,
-  UPDATE_DRAWER_STATE
+  UPDATE_DRAWER_STATE,
+  UPDATE_USER
 } from '../actions/app.js';
 
-const app = (state = {drawerOpened: false}, action) => {
+const app = (state = { drawerOpened: false }, action) => {
   switch (action.type) {
     case UPDATE_PAGE:
       return {
@@ -42,6 +43,11 @@ const app = (state = {drawerOpened: false}, action) => {
       return {
         ...state,
         snackbarOpened: false
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: action.user
       };
     default:
       return state;
