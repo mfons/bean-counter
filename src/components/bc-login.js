@@ -47,6 +47,8 @@ class BcLogin extends PageViewElement {
       const google = new firebase.auth.GoogleAuthProvider();
       this.auth.signInWithRedirect(google);
   }
+
+  
 }
 
 window.customElements.define('bc-login', BcLogin);

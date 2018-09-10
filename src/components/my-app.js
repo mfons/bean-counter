@@ -65,6 +65,24 @@ class MyApp extends connect(store)(LitElement) {
           display: none;
         } 
 
+      .bc-author {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .bc-circle-avatar {
+        height: 32px;
+        width: 32px;
+        background-color: #2c2c2c;
+        border-radius: 50px;
+      }
+      
+      .bc-author-name {
+        color: #999;
+        margin-left: 10px;
+      }
+
       app-header {
         position: fixed;
         top: 0;
@@ -210,7 +228,10 @@ class MyApp extends connect(store)(LitElement) {
         <a selected?="${_page === 'view2'}" href="/view2">View Two</a>
         <a selected?="${_page === 'view3'}" href="/view3">View Three</a>
         <a selected?="${_page === 'login'}" href="/login">Login</a>
-        <div>Logged in as: ${user ? user.displayName : '...not logged in'} </div> 
+        <div class="bc-author">
+          <img class="bc-circle-avatar" src="${user ? user.photoURL : '#'}" alt="Profile Photo">
+          <div class="bc-author-name">${user ? user.displayName : '...not logged in'}</div>
+        </div>
       </nav>
     </app-drawer>
 
