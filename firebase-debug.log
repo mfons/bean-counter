@@ -1,0 +1,341 @@
+[debug] [2018-09-11T02:55:05.537Z] ----------------------------------------------------------------------
+[debug] [2018-09-11T02:55:05.541Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Fons\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-09-11T02:55:05.542Z] CLI Version:   4.0.3
+[debug] [2018-09-11T02:55:05.542Z] Platform:      win32
+[debug] [2018-09-11T02:55:05.542Z] Node Version:  v9.7.1
+[debug] [2018-09-11T02:55:05.543Z] Time:          Mon Sep 10 2018 20:55:05 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-11T02:55:05.543Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-11T02:55:05.603Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-11T02:55:05.604Z] > authorizing via signed-in user
+[debug] [2018-09-11T02:55:05.607Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-11T02:55:05.607Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/uKcK-C9yhFqzdVcTnGEXl5ddTTiNQXWP_3ueQuGkNBi4F8brcMfjrhkB6vgqhZiz',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Sep 10 2018 20:55:05 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-11T02:55:05.808Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-11T02:55:05.852Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/bean-counter-9ac63  
+  
+ Mon Sep 10 2018 20:55:05 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-11T02:55:06.206Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-11T02:55:06.207Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/bean-counter-9ac63/tokens  
+  
+ Mon Sep 10 2018 20:55:06 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-11T02:55:06.525Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-11T02:55:06.526Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/bean-counter-9ac63  
+  
+ Mon Sep 10 2018 20:55:06 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-11T02:55:06.783Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\learning\polymer\polymer3\bean-counter'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-09-11T02:55:11.903Z] Fetching environment
+[debug] [2018-09-11T02:55:11.906Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/214006799666:getServerAppConfig  
+  
+ Mon Sep 10 2018 20:55:11 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-11T02:55:11.907Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/214006799666/clients/_:getWebAppConfig  
+  
+ Mon Sep 10 2018 20:55:11 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-11T02:55:12.069Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-11T02:55:12.070Z] Starting @google-cloud/functions-emulator
+[debug] [2018-09-11T02:55:12.666Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-09-11T02:55:17.552Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/bean-counter-9ac63/us-central1/app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[debug] [2018-09-13T00:46:36.492Z] ----------------------------------------------------------------------
+[debug] [2018-09-13T00:46:36.500Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Fons\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-09-13T00:46:36.501Z] CLI Version:   4.0.3
+[debug] [2018-09-13T00:46:36.501Z] Platform:      win32
+[debug] [2018-09-13T00:46:36.501Z] Node Version:  v9.7.1
+[debug] [2018-09-13T00:46:36.504Z] Time:          Wed Sep 12 2018 18:46:36 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-13T00:46:36.504Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-13T00:46:36.656Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-13T00:46:36.657Z] > authorizing via signed-in user
+[debug] [2018-09-13T00:46:36.663Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-13T00:46:36.664Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/uKcK-C9yhFqzdVcTnGEXl5ddTTiNQXWP_3ueQuGkNBi4F8brcMfjrhkB6vgqhZiz',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Sep 12 2018 18:46:36 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-13T00:46:36.945Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-13T00:46:36.987Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/bean-counter-9ac63  
+  
+ Wed Sep 12 2018 18:46:36 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-13T00:46:37.317Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-13T00:46:37.320Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/bean-counter-9ac63/tokens  
+  
+ Wed Sep 12 2018 18:46:37 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-13T00:46:37.699Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-13T00:46:37.701Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/bean-counter-9ac63  
+  
+ Wed Sep 12 2018 18:46:37 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-13T00:46:37.936Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\learning\polymer\polymer3\bean-counter'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-09-13T00:46:46.006Z] Fetching environment
+[debug] [2018-09-13T00:46:46.034Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/214006799666:getServerAppConfig  
+  
+ Wed Sep 12 2018 18:46:46 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-13T00:46:46.035Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/214006799666/clients/_:getWebAppConfig  
+  
+ Wed Sep 12 2018 18:46:46 GMT-0600 (Mountain Daylight Time)
+[debug] [2018-09-13T00:46:46.219Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-13T00:46:46.219Z] Starting @google-cloud/functions-emulator
+[debug] [2018-09-13T00:46:46.377Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: build
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-09-13T00:46:53.263Z] Parsing function triggers
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /favicon.ico to local function app
+[info] +  functions: app: http://localhost:5001/bean-counter-9ac63/us-central1/app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /view3 to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/index.html?_sw-precache=9f186e727766beebdbc83a5111a0a242 to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app
+[info] [hosting] Rewriting /nutrientsofinterest to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/@polymer/lit-element/lit-element.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/shady-render.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lit-html.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/modify-template.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/node_modules/lit-html/lib/lit-extended.js.map to local function app
+[info] [hosting] Rewriting /esm-bundled/undefined to local function app
+[info] [hosting] Rewriting /esm-bundled/ to local function app

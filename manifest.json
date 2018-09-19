@@ -1,7 +1,7 @@
 {
-  "name": "My App",
-  "short_name": "My App",
-  "description": "My App description",
+  "name": "Bean Counter",
+  "short_name": "Bean Counter",
+  "description": "Bean Counter allows you to pick nutrients you are interested in then record food you are eating and see what nutrients you are eating in summary form.",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#3f51b5",
