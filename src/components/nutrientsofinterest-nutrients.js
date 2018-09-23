@@ -17,7 +17,8 @@ import './nutrientsofinterest-item.js'; // NB this was not in the original PWA S
 import { ButtonSharedStyles } from './button-shared-styles.js';
 
 class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
-  _render({_nutrients}) {
+  render() {
+    const {_nutrients} = this;
     return html`
       ${ButtonSharedStyles}
       <style>
@@ -28,26 +29,24 @@ class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
         return html`
           <div>
              <nutrientsofinterest-item name="${item.title}" amount="${item.inventory}" price="${item.price}"></nutrientsofinterest-item>
-             //   <!-- on-click="${(e) => store.dispatch(addToCart(e.currentTarget.dataset['index']))}" -->
-            <button disabled="${item.inventory === 0}">hi!
-             </button>
+             //   <!-- @click="${(e) => store.dispatch(addToCart(e.currentTarget.dataset['index']))}" -->
+            <button
+              .disabled="${item.inventory === 0}"
+                data-index$="${item.id}"
+                title="${item.inventory === 0 ? 'Sold out' : 'Add to cart' }">
+              ${item.inventory === 0 ? 'Sold out': addToCartIcon }
+            </button>
            </div>
         `
       })}
     `;
   }
 
-//  
-//  data-index$="${item.id}"
-//  title="${item.inventory === 0 ? 'Sold out' : 'Add to cart' }">
-//  ${item.inventory === 0 ? 'Sold out': addToCartIcon }
-
-
   static get properties() { return {
-    _nutrients: Object
+    _nutrients: { type: Object}
   }}
 
-  _firstRendered() {
+  firstUpdated() {
     store.dispatch(getAllNutrients());
   }
 

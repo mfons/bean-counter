@@ -17,7 +17,7 @@ store.addReducers({
 import './nutrientsofinterest-nutrients.js';
 
 class BcNutrientsOfInterest extends connect(store)(PageViewElement) {
-  _render(props) {
+  render() {
     return html`
       ${SharedStyles}
       <section>

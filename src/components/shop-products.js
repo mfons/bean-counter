@@ -24,7 +24,8 @@ import { addToCartIcon } from './my-icons.js';
 import { ButtonSharedStyles } from './button-shared-styles.js';
 
 class ShopProducts extends connect(store)(LitElement) {
-  _render({_products}) {
+  render() {
+    const {_products} = this;
     return html`
       ${ButtonSharedStyles}
       <style>
@@ -36,8 +37,8 @@ class ShopProducts extends connect(store)(LitElement) {
           <div>
             <shop-item name="${item.title}" amount="${item.inventory}" price="${item.price}"></shop-item>
             <button
-                disabled="${item.inventory === 0}"
-                on-click="${(e) => store.dispatch(addToCart(e.currentTarget.dataset['index']))}"
+                .disabled="${item.inventory === 0}"
+                @click="${(e) => store.dispatch(addToCart(e.currentTarget.dataset['index']))}"
                 data-index$="${item.id}"
                 title="${item.inventory === 0 ? 'Sold out' : 'Add to cart' }">
               ${item.inventory === 0 ? 'Sold out': addToCartIcon }
@@ -49,10 +50,10 @@ class ShopProducts extends connect(store)(LitElement) {
   }
 
   static get properties() { return {
-    _products: Object
+    _products: { type: Object}
   }}
 
-  _firstRendered() {
+  firstUpdated() {
     store.dispatch(getAllProducts());
   }
 

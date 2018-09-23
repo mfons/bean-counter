@@ -12,7 +12,7 @@ class BcLogin extends PageViewElement {
     };
   }
 
-  _render(props) {
+  render() {
     // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     //     // Handle Errors here.
     //     var errorCode = error.code;
@@ -25,7 +25,7 @@ class BcLogin extends PageViewElement {
       <section>
         <h2>Let's login folks!!</h2>
         <p>We can get our avitar and a uid to use in firestore and lots of fun stuff.</p>
-        <p>Logged in as:  ${props.user ? props.user.displayName : '...not logged in'}</p>
+        <p>Logged in as:  ${this.user ? this.user.displayName : '...not logged in'}</p>
         <p>So we need a button or two...</p>
         <button on-click="${(e) => this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}">Login</button>
       </section>

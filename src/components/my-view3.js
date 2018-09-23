@@ -33,7 +33,8 @@ import { SharedStyles } from './shared-styles.js';
 import { ButtonSharedStyles } from './button-shared-styles.js';
 
 class MyView3 extends connect(store)(PageViewElement) {
-  _render({_quantity, _error}) {
+  render() {
+    const {_quantity, _error} = this;
     return html`
       ${SharedStyles}
       ${ButtonSharedStyles}
@@ -73,8 +74,8 @@ class MyView3 extends connect(store)(PageViewElement) {
         <div>${_error}</div>
         <br>
         <p>
-          <button class="checkout" hidden="${_quantity == 0}"
-              on-click="${() => store.dispatch(checkout())}">
+          <button class="checkout" ?hidden="${_quantity == 0}"
+              @click="${() => store.dispatch(checkout())}">
             Checkout
           </button>
         </p>
@@ -84,8 +85,8 @@ class MyView3 extends connect(store)(PageViewElement) {
 
   static get properties() { return {
     // This is the data from the store.
-    _quantity: Number,
-    _error: String
+    _quantity: { type: Number},
+    _error: { type: String}
   }}
 
   // This is called every time something is updated in the store.

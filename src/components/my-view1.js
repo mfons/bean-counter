@@ -17,7 +17,7 @@ import { SharedStyles } from './shared-styles.js';
 class MyView1 extends PageViewElement {
 
 
-  _render(props) {
+  render() {
     const db = firebase.firestore();
     // only need to do the setting once in the code?
     const settings = {timestampsInSnapshots: true};
