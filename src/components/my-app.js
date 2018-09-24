@@ -208,7 +208,7 @@ class MyApp extends connect(store)(LitElement) {
     <!-- Header -->
     <app-header condenses reveals effects="waterfall">
       <app-toolbar class="toolbar-top">
-        <!--<button class="menu-btn" title="Menu" @click="${_ => store.dispatch(updateDrawerState(true))}">${menuIcon}</button>-->
+        <button class="menu-btn" title="Menu" @click="${_ => store.dispatch(updateDrawerState(true))}">${menuIcon}</button>
         <div main-title>${appTitle}</div>
       </app-toolbar>
 

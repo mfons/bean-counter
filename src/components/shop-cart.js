@@ -42,7 +42,7 @@ class ShopCart extends connect(store)(LitElement) {
             <shop-item name="${item.title}" amount="${item.amount}" price="${item.price}"></shop-item>
             <button
                 @click="${(e) => store.dispatch(removeFromCart(e.currentTarget.dataset['index']))}"
-                data-index$="${item.id}"
+                data-index="${item.id}"
                 title="Remove from cart">
               ${removeFromCartIcon}
             </button>

@@ -4,6 +4,8 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 // This element is connected to the Redux store.
 import { store } from '../store.js';
 
+import './nutrientsofinterest-item.js';
+
 // These are the actions needed by this element.
 import { getAllNutrients } from '../actions/nutrientsofinterest.js';
 
@@ -18,21 +20,19 @@ import { ButtonSharedStyles } from './button-shared-styles.js';
 
 class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
   render() {
-    const {_nutrients} = this;
-    return html`
+     return html`
       ${ButtonSharedStyles}
       <style>
         :host { display: block; }
       </style>
-      ${Object.keys(_nutrients).map((key) => {
-        const item = _nutrients[key];
+      ${Object.keys(this._nutrients).map((key) => {
+        const item = this._nutrients[key];
         return html`
           <div>
              <nutrientsofinterest-item name="${item.title}" amount="${item.inventory}" price="${item.price}"></nutrientsofinterest-item>
-             //   <!-- @click="${(e) => store.dispatch(addToCart(e.currentTarget.dataset['index']))}" -->
             <button
               .disabled="${item.inventory === 0}"
-                data-index$="${item.id}"
+                data-index="${item.id}"
                 title="${item.inventory === 0 ? 'Sold out' : 'Add to cart' }">
               ${item.inventory === 0 ? 'Sold out': addToCartIcon }
             </button>
