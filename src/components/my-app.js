@@ -244,7 +244,7 @@ class MyApp extends connect(store)(LitElement) {
       <my-view1 class="page" ?active="${_page === 'view1'}"></my-view1>
       <my-view2 class="page" ?active="${_page === 'view2'}"></my-view2>
       <my-view3 class="page" ?active="${_page === 'view3'}"></my-view3>
-      <bc-login id="bcloginElementId" class="page" on-auth="${this.isLoggedIn}" ?active="${_page === 'login'}"></bc-login>
+      <bc-login id="bcloginElementId" class="page" @auth="${this.isLoggedIn}" ?active="${_page === 'login'}"></bc-login>
       <my-view404 class="page" ?active="${_page === 'view404'}"></my-view404>
     </main>
 

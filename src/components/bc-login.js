@@ -27,7 +27,7 @@ class BcLogin extends PageViewElement {
         <p>We can get our avitar and a uid to use in firestore and lots of fun stuff.</p>
         <p>Logged in as:  ${this.user ? this.user.displayName : '...not logged in'}</p>
         <p>So we need a button or two...</p>
-        <button on-click="${(e) => this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}">Login</button>
+        <button @click="${(e) => this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}">Login</button>
       </section>
      `;
   }
