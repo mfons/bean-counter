@@ -36,6 +36,7 @@ class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
 
       ${Object.values(this._nutrients)
       .sort((a, b) => a.name.localeCompare(b.name))
+      .filter((item) => !this.containsObject(item.id, this._nutrientsOfInterest)) 
       .map((item) => {
         return html`
           <div>
@@ -54,8 +55,19 @@ class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
   }
 
   static get properties() { return {
-    _nutrients: { type: Object}
+    _nutrients: { type: Object},
+    _nutrientsOfInterest: { type: Array }
   }}
+
+  containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+  }
 
   firstUpdated() {
     store.dispatch(getAllNutrients());
@@ -64,6 +76,7 @@ class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
   // This is called every time something is updated in the store.
   _stateChanged(state) {
     this._nutrients = state.nutrientsOfInterest.nutrients;
+    this._nutrientsOfInterest = state.nutrientsOfInterest.nutrientsOfInterest;
   }
 
   _computedClass(isSelected, currentItemName) {
