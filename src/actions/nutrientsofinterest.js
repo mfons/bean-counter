@@ -1,13 +1,6 @@
 export const GET_NUTRIENTS = 'GET_NUTRIENTS';
-export const SET_NUTRIENTS_OF_INTEREST = 'SET_NUTRIENTS_OF_INTEREST';
-
-const NUTRIENTS_LIST = [
-    {"id": 1, "title": "Cabot Creamery Extra Sharp Cheddar Cheese", "price": 10.99, "inventory": 2},
-    {"id": 2, "title": "Cowgirl Creamery Mt. Tam Cheese", "price": 29.99, "inventory": 10},
-    {"id": 3, "title": "Tillamook Medium Cheddar Cheese", "price": 8.99, "inventory": 5},
-    {"id": 4, "title": "Point Reyes Bay Blue Cheese", "price": 24.99, "inventory": 7},
-    {"id": 5, "title": "Shepherd's Halloumi Cheese", "price": 11.99, "inventory": 3}
-  ];
+export const ADD_NUTRIENT_OF_INTEREST = 'ADD_NUTRIENT_OF_INTEREST';
+export const REMOVE_NUTRIENT_OF_INTEREST = 'REMOVE_NUTRIENT_OF_INTEREST';
   
   const _goGetAllNutrients = () => {
     var myHeaders = new Headers();
@@ -37,7 +30,9 @@ const NUTRIENTS_LIST = [
       let nutrients = {};
       if (typeof data.list !== 'undefined' && typeof data.list.item !== 'undefined') {
           // You could reformat the data in the right format as well:
-          nutrients = data.list.item.reduce((obj, nutrient) => {
+          nutrients = data.list.item
+          .filter(nutrient => !nutrient.name.match(/^\d/) )
+          .reduce((obj, nutrient) => {
             obj[nutrient.id] = nutrient;
             return obj
           }, {});
@@ -53,16 +48,18 @@ const NUTRIENTS_LIST = [
       console.warn('There has been a problem with your fetch operation: ', error.message);
     });
   };
-
-  export const setNutrientsOfInterest = (selectedNutrients) => (dispatch, getState) =>{
-    const state = getState();
-    dispatch(setNutrientsOfInterestUnsafe(selectedNutrients));
-  };
   
-  export const setNutrientsOfInterestUnsafe = (nutrientsOfInterest) => {
+  export const addNutrientOfInterest = (nutrientOfInterest) => {
     return {
-      type: SET_NUTRIENTS_OF_INTEREST,
-      nutrientsOfInterest
+      type: ADD_NUTRIENT_OF_INTEREST,
+      nutrientOfInterest
+    };
+  };
+
+  export const removeNutrientOfInterest = (nutrientOfInterest) => {
+    return {
+      type: REMOVE_NUTRIENT_OF_INTEREST,
+      nutrientOfInterest
     };
   };
 

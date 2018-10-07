@@ -8,10 +8,13 @@ import { store } from '../store.js';
 import './nutrientsofinterest-item.js';
 
 // These are the actions needed by this element.
-import { getAllNutrients, setNutrientsOfInterest } from '../actions/nutrientsofinterest.js';
+import { 
+  getAllNutrients, 
+  addNutrientOfInterest 
+} from '../actions/nutrientsofinterest.js';
 
 // These are the elements needed by this element.
-import { addToCartIcon } from './my-icons.js';
+import { plusIcon } from './my-icons.js';
 
 // These are the elements needed by this element.
 import './nutrientsofinterest-item.js'; 
@@ -31,16 +34,18 @@ class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
       <!--bc-ajax-get-possible-nutrients>
       </bc-ajax-get-possible-nutrients-->
 
-      ${Object.keys(this._nutrients).map((key) => {
-        const item = this._nutrients[key];
+      ${Object.values(this._nutrients)
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((item) => {
         return html`
           <div>
-             <nutrientsofinterest-item name="${item.name}" amount="${item.name}" price="${item.offset}"></nutrientsofinterest-item>
+             <nutrientsofinterest-item name="${item.name}" ></nutrientsofinterest-item>
             <button
               .disabled="${false}"
                 data-index="${item.id}"
-                title="${item.name}">
-              ${addToCartIcon }
+                title="${item.name}"
+                @click="${(e) => store.dispatch(addNutrientOfInterest(e.currentTarget.dataset['index']))}">
+              ${plusIcon }
             </button>
            </div>
         `;

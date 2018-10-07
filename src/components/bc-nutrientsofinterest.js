@@ -15,6 +15,7 @@ store.addReducers({
 
 // These are the elements needed by this element.
 import './nutrientsofinterest-nutrients.js';
+import './nutrientsofinterest-nutrientsofinterest.js'
 
 class BcNutrientsOfInterest extends connect(store)(PageViewElement) {
   render() {
@@ -27,7 +28,11 @@ class BcNutrientsOfInterest extends connect(store)(PageViewElement) {
         in your body.  So this page is the first thing
         you need to do to use this program.</p>
       </section>
-      <h3>Nutrients Of Interest</h3>
+      <h2>Nutrients Of Interest</h2>
+      <h3>Currently Chosen Nutrients</h3>
+      <nutrientsofinterest-nutrientsofinterest></nutrientsofinterest-nutrientsofinterest>
+
+      <h3>Choose from All Available Nutrients</h3>
       <nutrientsofinterest-nutrients></nutrientsofinterest-nutrients>
     `
   }

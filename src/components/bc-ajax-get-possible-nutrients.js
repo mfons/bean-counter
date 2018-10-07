@@ -10,7 +10,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 // the list of possible nutrients.
 
 // These are the actions needed by this element.
-import { getAllNutrients, setNutrientsOfInterest } from '../actions/nutrientsofinterest.js';
+import { getAllNutrients, addNutrientOfInterest } from '../actions/nutrientsofinterest.js';
 
 class BcAjaxGetPossibleNutrients extends connect(store)(LitElement) {
   static get template() {

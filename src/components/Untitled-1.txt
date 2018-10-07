@@ -1,0 +1,14 @@
+inside iron-list
+   @selected-items-changed="${(e) => store.dispatch(setNutrientsOfInterest(e))}"  
+          selection-enabled multi-selection
+
+inside div
+ tabindex="[[tabIndex]]" class="[[this._computedClass(selected, item.title)]]"
+
+       <iron-list id="nutrientIronList" items="${this._nutrients}"  
+          @selected-items-changed="${(e) => store.dispatch(setNutrientsOfInterest(e))}"  
+          selection-enabled multi-selection>
+        <template>
+          <div >${item.title}</div>
+        </template>
+      </iron-list>

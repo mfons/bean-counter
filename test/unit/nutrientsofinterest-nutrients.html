@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>bc-nutrientsofinterest</title>
+
+    <script src="../../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../../node_modules/wct-browser-legacy/browser.js"></script>
+
+    <!-- Import the element to test -->
+    <script type="module" src="../../src/components/nutrientsofinterest-nutrients.js"></script>
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <nutrientsofinterest-nutrients></nutrientsofinterest-nutrients>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+      import 'axe-core/axe.min.js';
+      import {axeReport} from 'pwa-helpers/axe-report.js';
+
+      suite('counter-element tests', function() {
+        let el;
+        setup(function() {
+          el = fixture('basic');
+          // Make tests wait until element is rendered.
+          return el.updateComplete;
+        });
+
+        test('starts empty', function() {
+          assert.equal(el._nutrients.length(), '0');
+        });
+
+        // test('clicking on plus increments', function() {
+        //   assert.equal(el.clicks, '0');
+        //   assert.equal(el.value, '0');
+
+        //   const buttons = el.shadowRoot.querySelectorAll('button');
+        //   buttons[0].click();
+
+        //   assert.equal(el.clicks, '1');
+        //   assert.equal(el.value, '1');
+        // });
+
+        // test('clicking on minus decrements', function() {
+        //   assert.equal(el.clicks, '0');
+        //   assert.equal(el.value, '0');
+
+        //   const buttons = el.shadowRoot.querySelectorAll('button');
+        //   buttons[1].click();
+
+        //   assert.equal(el.clicks, '1');
+        //   assert.equal(el.value, '-1');
+        // });
+
+        test('a11y', function() {
+          return axeReport(el);
+        });
+      });
+    </script>
+  </body>
+</html>
