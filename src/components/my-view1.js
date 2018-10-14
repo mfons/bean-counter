@@ -16,25 +16,7 @@ import { SharedStyles } from './shared-styles.js';
 
 class MyView1 extends PageViewElement {
 
-
   render() {
-    const db = firebase.firestore();
-    // only need to do the setting once in the code?
-    const settings = {timestampsInSnapshots: true};
-    db.settings(settings);
-
-    db.collection("users").add({
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815
-    })
-    .then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function (error) {
-      console.error("Error adding document: ", error);
-    });
-
     return html`
        ${SharedStyles}
       <section>

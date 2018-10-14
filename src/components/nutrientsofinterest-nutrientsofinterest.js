@@ -34,7 +34,7 @@ class NutrientsOfInterestNutrientsOfInterest extends connect(store)(LitElement) 
           <div>
             <nutrientsofinterest-item name="${item.name}"></nutrientsofinterest-item>
             <button
-                @click="${(e) => store.dispatch(removeNutrientOfInterest(e.currentTarget.dataset['index']))}"
+                @click="${(e) => store.dispatch(removeNutrientOfInterest(e.currentTarget.dataset['index'], this._user))}"
                 data-index="${item.id}"
                 title="Remove this nutrient from list...">
               ${minusIcon}
@@ -48,13 +48,15 @@ class NutrientsOfInterestNutrientsOfInterest extends connect(store)(LitElement) 
 
   static get properties() { return {
     _items: { type: Array},
-    _total: { type: Number}
+    _total: { type: Number},
+    _user: {type: Object}
   }}
 
   // This is called every time something is updated in the store.
   _stateChanged(state) {
     this._items = nutrientsOfInterestItemsSelector(state);
     this._total = nutrientsOfInterestTotalSelector(state);
+    this._user = state.app.user;
   }
 }
 

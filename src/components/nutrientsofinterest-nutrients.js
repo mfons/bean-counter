@@ -45,7 +45,7 @@ class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
               .disabled="${false}"
                 data-index="${item.id}"
                 title="${item.name}"
-                @click="${(e) => store.dispatch(addNutrientOfInterest(e.currentTarget.dataset['index']))}">
+                @click="${(e) => store.dispatch(addNutrientOfInterest(e.currentTarget.dataset['index'], this._user))}">
               ${plusIcon }
             </button>
            </div>
@@ -56,7 +56,8 @@ class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
 
   static get properties() { return {
     _nutrients: { type: Object},
-    _nutrientsOfInterest: { type: Array }
+    _nutrientsOfInterest: { type: Array },
+    _user: {type: Object}
   }}
 
   containsObject(obj, list) {
@@ -77,6 +78,7 @@ class NutrientsOfInterestNutrients extends connect(store)(LitElement) {
   _stateChanged(state) {
     this._nutrients = state.nutrientsOfInterest.nutrients;
     this._nutrientsOfInterest = state.nutrientsOfInterest.nutrientsOfInterest;
+    this._user = state.app.user;
   }
 
   _computedClass(isSelected, currentItemName) {

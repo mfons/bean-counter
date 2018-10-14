@@ -21,6 +21,39 @@ export const REMOVE_NUTRIENT_OF_INTEREST = 'REMOVE_NUTRIENT_OF_INTEREST';
     });
   }
 
+  const _updateFirebaseNutrientsOfInterest = (user, nutrientOfInterest, nutrients, updateType) => {
+    const db = firebase.firestore();
+    // only need to do the setting once in the code?
+    const settings = {timestampsInSnapshots: true};
+    db.settings(settings);
+
+    const userDocRef = db.collection("users").doc(user.uid);
+    userDocRef.set({
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      uid: user.uid
+    })
+    .then(function () {
+      console.log("Document written with ID: ", userDocRef.id);
+      if (updateType === 'add') {
+        userDocRef
+          .collection("nutrientsOfInterest")
+          .doc(nutrientOfInterest)
+          .set(Object.assign({}, nutrients[nutrientOfInterest], {timestamp: firebase.firestore.FieldValue.serverTimestamp()}))
+          .then(docRef => console.info("successfully added nutrient of interest from firebase", nutrients[nutrientOfInterest].name));
+      }
+      if (updateType === 'remove') {
+        userDocRef.collection("nutrientsOfInterest")
+          .doc(nutrientOfInterest)
+          .delete()
+          .then(() => console.info("successfully deleted nutrient of interest from firebase", nutrients[nutrientOfInterest].name));
+      }
+    })
+    .catch(function (error) {
+      console.error("Error processing document: ", error);
+    });
+  }
+
   export const getAllNutrients = () => (dispatch, getState) => {
     // Here you would normally get the data from the server. We're simulating
     // that by dispatching an async action (that you would dispatch when you
@@ -49,18 +82,20 @@ export const REMOVE_NUTRIENT_OF_INTEREST = 'REMOVE_NUTRIENT_OF_INTEREST';
     });
   };
   
-  export const addNutrientOfInterest = (nutrientOfInterest) => {
-    return {
+  export const addNutrientOfInterest = (nutrientOfInterest, user) => (dispatch, getState) => {
+    _updateFirebaseNutrientsOfInterest(user, nutrientOfInterest, getState().nutrientsOfInterest.nutrients, 'add');
+    dispatch( {
       type: ADD_NUTRIENT_OF_INTEREST,
       nutrientOfInterest
-    };
+    });
   };
 
-  export const removeNutrientOfInterest = (nutrientOfInterest) => {
-    return {
+  export const removeNutrientOfInterest = (nutrientOfInterest, user) => (dispatch, getState) => {
+    _updateFirebaseNutrientsOfInterest(user, nutrientOfInterest, getState().nutrientsOfInterest.nutrients, 'remove');
+    dispatch({
       type: REMOVE_NUTRIENT_OF_INTEREST,
       nutrientOfInterest
-    };
+    });
   };
 
 
