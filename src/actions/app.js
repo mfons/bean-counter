@@ -15,10 +15,24 @@ export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 export const UPDATE_USER = 'UPDATE_USER';
 
-export const navigate = (path) => (dispatch) => {
+export const navigate = (path) => (dispatch, getState) => {
   // Extract the page name from path.
-  const page = path === '/' ? 'view1' : path.slice(1);
-
+  let page;
+  const state = getState();
+  if (path === '/') {
+    if(state.app.user && state.nutrientsOfInterest.nutrientsOfInterest.length > 0) {
+      page = 'eat';
+    }
+    else if(state.app.user) {
+      page = 'nutrientsofinterest'
+    }
+    else {
+      page = path.slice(1);
+    }
+  }
+  else {
+    page = path.slice(1);
+  }
   // Any other info you might want to extract from the path (like page type),
   // you can do here
   dispatch(loadPage(page));
@@ -28,7 +42,7 @@ export const navigate = (path) => (dispatch) => {
 };
 
 const loadPage = (page) => (dispatch) => {
-  switch(page) {
+  switch (page) {
     case 'view1':
       import('../components/my-view1.js').then((module) => {
         // Put code in here that you want to run every time when
@@ -37,6 +51,10 @@ const loadPage = (page) => (dispatch) => {
       break;
     case 'nutrientsofinterest':
       import('../components/bc-nutrientsofinterest.js').then((module) => {
+      });
+      break;
+    case 'eat':
+      import('../components/bc-eat.js').then((module) => {
       });
       break;
     case 'view2':
@@ -64,7 +82,7 @@ const updatePage = (page) => {
 };
 
 export const updateUser = (user) => (dispatch, getState) => {
-  dispatch ({
+  dispatch({
     type: UPDATE_USER,
     user
   });

@@ -82,5 +82,19 @@
       "type": "script",
       "weight": 1
     }
+  },
+  "/eat": {
+    "src/components/my-app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "src/components/bc-eat.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    }
   }
 }

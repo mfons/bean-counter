@@ -38,7 +38,7 @@ import './snack-bar.js';
 
 class MyApp extends connect(store)(LitElement) {
   render() {
-    const {appTitle, _page, _drawerOpened, _snackbarOpened, _offline, user} = this;
+    const { appTitle, _page, _drawerOpened, _snackbarOpened, _offline, user } = this;
     // Anything that's related to rendering should be done in here.
     return html`
     <style>
@@ -215,6 +215,7 @@ class MyApp extends connect(store)(LitElement) {
       <!-- This gets hidden on a small screen-->
       <nav class="toolbar-list">
         <a ?selected="${_page === 'nutrientsofinterest'}" href="/nutrientsofinterest">1. Pick Your Nutrients</a>
+        <a ?selected="${_page === 'eat'}" href="/eat">2. Eat!</a>
         <a ?selected="${_page === 'view1'}" href="/view1">View One</a>
         <a ?selected="${_page === 'view2'}" href="/view2">View Two</a>
         <a ?selected="${_page === 'view3'}" href="/view3">View Three</a>
@@ -227,6 +228,7 @@ class MyApp extends connect(store)(LitElement) {
         @opened-changed="${e => store.dispatch(updateDrawerState(e.target.opened))}">
       <nav class="drawer-list">
         <a ?selected="${_page === 'nutrientsofinterest'}" href="/nutrientsofinterest">1. Pick Nutrients</a>
+        <a ?selected="${_page === 'eat'}" href="/eat">2. Eat!</a>
         <a ?selected="${_page === 'view1'}" href="/view1">View One</a>
         <a ?selected="${_page === 'view2'}" href="/view2">View Two</a>
         <a ?selected="${_page === 'view3'}" href="/view3">View Three</a>
@@ -241,6 +243,7 @@ class MyApp extends connect(store)(LitElement) {
     <!-- Main content -->
     <main role="main" class="main-content">
       <bc-nutrientsofinterest class="page" ?active="${_page === 'nutrientsofinterest'}"></bc-nutrientsofinterest>
+      <bc-eat class="page" ?active="${_page === 'eat'}"></bc-eat>
       <my-view1 class="page" ?active="${_page === 'view1'}"></my-view1>
       <my-view2 class="page" ?active="${_page === 'view2'}"></my-view2>
       <my-view3 class="page" ?active="${_page === 'view3'}"></my-view3>
@@ -257,10 +260,10 @@ class MyApp extends connect(store)(LitElement) {
     </snack-bar>
     `;
 
-  
+
   }
 
-  whosLoggedIn() { 
+  whosLoggedIn() {
     return this.user ? this.user.displayName : '';
   }
 
@@ -274,12 +277,12 @@ class MyApp extends connect(store)(LitElement) {
       //this.$.bcloginElementId.classList.remove('bc-hidden');
     }
   }
-static get properties() {
+  static get properties() {
     return {
       appTitle: { type: String },
       _page: { type: String },
       _drawerOpened: { type: Boolean },
-      _snackbarOpened: { type: Boolean},
+      _snackbarOpened: { type: Boolean },
       _offline: { type: Boolean },
       user: { type: Object }
     }
@@ -294,23 +297,23 @@ static get properties() {
 
   ready() {
     super.ready();
-    this.user = {displayName: 'Not logged in yet...'};
+    this.user = { displayName: 'Not logged in yet...' };
   }
 
   firstUpdated() {
     installRouter((location) => store.dispatch(navigate(window.decodeURIComponent(location.pathname))));
     installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
     installMediaQueryWatcher(`(min-width: 460px)`,
-        (matches) => store.dispatch(updateLayout(matches)));
+      (matches) => store.dispatch(updateLayout(matches)));
   }
 
-  updated(changedProps){
+  updated(changedProps) {
     if (changedProps.has('_page')) {
       const pageTitle = this.appTitle + ' - ' + this._page;
       updateMetadata({
-          title: pageTitle,
-          description: pageTitle
-          // This object also takes an image property, that points to an img src.
+        title: pageTitle,
+        description: pageTitle
+        // This object also takes an image property, that points to an img src.
       });
     }
   }
