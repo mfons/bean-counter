@@ -45,7 +45,6 @@ class NutrientsOfInterestNutrientsOfInterest extends connect(store)(LitElement) 
         }
       </style>
       <p ?hidden="${!_offline}" class="offline-thingy">OFFLINE CURRENTLY: &nbsp; once you are back online...</p>
-      <p ?hidden="${!_offline}"></p>
       <p ?hidden="${_items.length !== 0}">(To use this program, you must still choose some nutrients that you are interested in...)</p>
       ${_items.map((item) =>
         html`
