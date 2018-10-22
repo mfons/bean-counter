@@ -34,23 +34,23 @@ class NutrientsOfInterestNutrientsOfInterest extends connect(store)(LitElement) 
         :host { display: block; }
 
         .offline-thingy {
-          border: 5px red dotted;
+          border: 1px green solid;
           border-radius: 50%;
           margin: 0 2%;
           padding: 10% 10%;
           color: green;
-          background-color: yellow;
+          background-color: #001000;
           width: 200px;
           height: 200px;
         }
       </style>
-      <p ?hidden="${!_offline}" class="offline-thingy">OFFLINE CURRENTLY: &nbsp;no nutrient of interest changes possible at this time...</p>
+      <p ?hidden="${!_offline}" class="offline-thingy">Off-line: &nbsp;any changes will save once back on-line.</p>
       <p ?hidden="${_items.length !== 0}">(To use this program, you must still choose some nutrients that you are interested in...)</p>
       ${_items.map((item) =>
         html`
           <div>
             <nutrientsofinterest-item name="${item.name}"></nutrientsofinterest-item>
-            <button .disabled="${_offline}"
+            <button 
                 @click="${(e) => store.dispatch(removeNutrientOfInterest(e.currentTarget.dataset['index'], this._user))}"
                 data-index="${item.id}"
                 title="Remove this nutrient from list...">
