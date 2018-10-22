@@ -32,9 +32,18 @@ class NutrientsOfInterestNutrientsOfInterest extends connect(store)(LitElement) 
       ${ButtonSharedStyles}
       <style>
         :host { display: block; }
+
+        .offline-thingy {
+          border: 5px red dotted;
+          border-radius: 50%;
+          margin: 0 30%;
+          padding: 0 7%;
+          color: green;
+          background-color: yellow;
+        }
       </style>
-      <p ?hidden="${!_offline}">****** OFFLINE CURRENTLY           ***********</p>
-      <p ?hidden="${!_offline}">****** Once you are back online... ***********</p>
+      <p ?hidden="${!_offline}" class="offline-thingy">OFFLINE CURRENTLY: &nbsp; once you are back online...</p>
+      <p ?hidden="${!_offline}"></p>
       <p ?hidden="${_items.length !== 0}">(To use this program, you must still choose some nutrients that you are interested in...)</p>
       ${_items.map((item) =>
         html`
