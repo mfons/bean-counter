@@ -17,6 +17,9 @@ store.addReducers({
 import './nutrientsofinterest-nutrients.js';
 import './nutrientsofinterest-nutrientsofinterest.js'
 
+// These are the actions needed by this element.
+import { updateUser } from '../actions/app.js'
+
 class BcNutrientsOfInterest extends connect(store)(PageViewElement) {
   render() {
     return html`
@@ -39,7 +42,24 @@ class BcNutrientsOfInterest extends connect(store)(PageViewElement) {
   _stateChanged(state) {
     // this._quantity = cartQuantitySelector(state);
     this._error = state.nutrientsOfInterest.error;
+    this._user = state.app.user;
   }
+
+  static get properties() {
+    return {
+      _user: { type: Object }
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.auth = firebase.auth();
+    this.auth.onAuthStateChanged(user => {
+      this._user = user;
+      store.dispatch(updateUser(this._user));
+    });
+  }
+
 
 }
 

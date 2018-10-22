@@ -23,6 +23,18 @@ module.exports = {
       handler: 'fastest'
     }
   ],
-  navigateFallback: '/index.html',
-  navigateFallbackWhitelist: [ /^\/[^\_]+\/?/ ]
+  navigateFallback: 'index.html',
+  navigateFallbackWhitelist: [ /^\/[^\_]+\/?/ ],
+  runtimeCaching : [{
+    urlPattern: /^https:\/\/api\.nal\.usda\.gov\/ndb\/search/,
+    handler: 'cacheFirst'
+  },
+  {
+    urlPattern: /^https:\/\/api\.nal\.usda\.gov\/ndb\/nutrients/,
+    handler: 'cacheFirst'
+  },
+  {
+      urlPattern: /^https:\/\/api\.nal\.usda\.gov\/ndb\/list/,
+      handler: 'cacheFirst'
+  }]
 };

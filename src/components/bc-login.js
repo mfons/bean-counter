@@ -4,6 +4,8 @@ import { PageViewElement } from './page-view-element.js';
 // These are the shared styles needed by this element.
 import { SharedStyles } from './shared-styles.js';
 
+import {Button} from "@material/mwc-button"
+
 class BcLogin extends PageViewElement {
 
   static get properties() {
@@ -27,7 +29,7 @@ class BcLogin extends PageViewElement {
         <p>We can get our avitar and a uid to use in firestore and lots of fun stuff.</p>
         <p>Logged in as:  ${this.user ? this.user.displayName : '...not logged in'}</p>
         <p>So we need a button or two...</p>
-        <button @click="${(e) => this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}">Login</button>
+        <mwc-button unelevated label="Login" @click="${(e) => this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}"></mwc-button>
       </section>
      `;
   }

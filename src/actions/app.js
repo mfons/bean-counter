@@ -27,10 +27,10 @@ export const navigate = (path) => (dispatch, getState) => {
       page = 'nutrientsofinterest'
     }
     else {
-      page = path.slice(1);
+      page = 'login';
     }
   }
-  else {
+  else if (path.startsWith('/')) {
     page = path.slice(1);
   }
   // Any other info you might want to extract from the path (like page type),
