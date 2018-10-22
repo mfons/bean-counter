@@ -39,9 +39,10 @@ class NutrientsOfInterestNutrientsOfInterest extends connect(store)(LitElement) 
           margin: 0 2%;
           padding: 10% 10%;
           color: green;
-          background-color: #001000;
+          background-color: #d8fad8;
           width: 200px;
           height: 200px;
+          font-size: 30px;
         }
       </style>
       <p ?hidden="${!_offline}" class="offline-thingy">Off-line: &nbsp;any changes will save once back on-line.</p>
