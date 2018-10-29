@@ -15,7 +15,7 @@ const _goGetFoodsBySearch = (searchString, isStandardReference) => {
     let url = new URL("https://api.nal.usda.gov/ndb/search");
     const params = {
         "format": "json", 
-        "q": "butter", 
+        "q": searchString, 
         "sort": "n",
         "max": "500", 
         "offset": "0", 
