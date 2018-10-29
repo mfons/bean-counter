@@ -1,7 +1,7 @@
 export const SEARCH_FOR_FOODS_BY_STRING = 'SEARCH_FOR_FOODS_BY_STRING';
 
 
-const _goGetFoodsBySearch = (searchString, isStandardReferernce) => {
+const _goGetFoodsBySearch = (searchString, isStandardReference) => {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 

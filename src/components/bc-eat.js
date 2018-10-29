@@ -37,6 +37,14 @@ import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
 
 //import {MDCTextField} from '@material/textfield';
 
+// We are lazy loading its reducer.
+import nutrientsOfInterest from '../reducers/nutrientsofinterest.js';
+import food from '../reducers/food.js';
+store.addReducers({
+  nutrientsOfInterest, food
+});
+
+
 class BcEat extends connect(store)(PageViewElement) {
     render() {
         //const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
@@ -87,11 +95,17 @@ class BcEat extends connect(store)(PageViewElement) {
         </p>
         <iron-form id="presubmit">
             <form method="get" action="/">
-                <paper-input id="foodFluidSearchStringId" @tap="${this._onSearchStringTap}" name="foodFluidSearch" label="1. Search for a Food" @value-changed="${this._modifyFoodFluidSearchString}" required="" autocapitalize="off" spellcheck="true" @blur="${this._getFoodData}"></paper-input>
-                <paper-toggle-button checked="${this._isStandardReference}" @checked-changed="${e => this._standardReferenceModified(e)}">
+                <paper-input id="foodFluidSearchStringId" 
+                @tap="${this._onSearchStringTap}" name="foodFluidSearch" label="1. Search for a Food" 
+                @value-changed="${e => {this._foodFluidSearchString = e.detail.value; console.info("debug",this)}}" required="" autocapitalize="off" 
+                spellcheck="true" @blur="${e => this._getFoodData(e)}"></paper-input>
+                <paper-toggle-button checked="${this._isStandardReference}" 
+                @checked-changed="${e => this._standardReferenceModified(e)}">
                     (Only Search Generic Food List)
                 </paper-toggle-button>
-                <paper-dropdown-menu @iron-select="_foodSelectionMenuIronSelectHandler" required="" style="width:100%;" label="2. Pick a specific food" id="foodSelectionMenu" vertical-align="bottom" horizontal-align="left">
+                <paper-dropdown-menu @iron-select="_foodSelectionMenuIronSelectHandler" required="" 
+                style="width:100%;" label="2. Pick a specific food" id="foodSelectionMenu" 
+                vertical-align="bottom" horizontal-align="left">
                     <div id="foodSelectionDropdownContentId" class="dropdown-content" slot="dropdown-content" style="width: 75vw; height: 72vh; ">
                         <iron-list id="foodFluidIronList" items="[[_foodsChanged(foods.*)]]" @selected-item-changed="modifySelectedFood()" selection-enabled="">
                             <template>
@@ -105,8 +119,10 @@ class BcEat extends connect(store)(PageViewElement) {
                     <paper-input class="gram-weight-field" name="weight" label="(Weight (g))" readonly="true" value="[[_getWeight(foodNutrients.*)]]"></paper-input>
                 </div>
                 <div class="horizontal">
-                    <paper-input id="multiplierFieldId" name="multiplier" @click="_onMultiplierTap" type="number" step="any" label="3. How many servings?" value="{{multiplier}}" required=""></paper-input>
-                    <paper-input class="gram-weight-field" name="consumedGrams" label="(Total (g))" value="{{consumedGrams}}" readonly="true"></paper-input>
+                    <paper-input id="multiplierFieldId" name="multiplier" @click="_onMultiplierTap" 
+                    type="number" step="any" label="3. How many servings?" value="{{multiplier}}" required=""></paper-input>
+                    <paper-input class="gram-weight-field" name="consumedGrams" label="(Total (g))" 
+                    value="{{consumedGrams}}" readonly="true"></paper-input>
                 </div>
                 <button @click="_submit" title="Consume" class="blue">${localDining}</button>
                 <button @click="_reset" title="Reset" class="blue">${clearIcon}</button>
@@ -132,8 +148,8 @@ class BcEat extends connect(store)(PageViewElement) {
     }
 
     _modifyFoodFluidSearchString(e) {
-        //console.info("made it to modifyFoodFluidSearchString", e);
-
+        console.info("made it to modifyFoodFluidSearchString", e);
+        this._foodFluidSearchString = e.detail.value;
     }
 
     _onSearchStringTap(e) {
