@@ -143,9 +143,16 @@ class BcEat extends connect(store)(PageViewElement) {
     static get properties() {
         return {
             _foodFluidSearchString: { type: String },
-            _isStandardReference: { type: Boolean, value: true }
+            _isStandardReference: { type: Boolean, value: true },
+            _latestFoodList: { type: Array }
         }
     }
+
+    // This is called every time something is updated in the store.
+    _stateChanged(state) {
+        this._latestFoodList = state.food.latestFoodList;
+    }
+
 
     _modifyFoodFluidSearchString(e) {
         console.info("made it to modifyFoodFluidSearchString", e);

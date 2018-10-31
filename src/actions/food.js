@@ -42,17 +42,17 @@ export const searchForFoodsByString = (searchString, isStandardReference) => (di
         .then((data) => {
             console.log("nc-ajax-get-possible-nutrients._tasksLoaded() data was: ", data);
             let searchResults = {};
-            if (data.detail.response.list  && 
-                data.detail.response.list.item) {
+            if (data.list  && data.list.item) {
                 // You could reformat the data in the right format as well:
-                searchResults = data.detail.response.list.item
-                    .reduce((obj, nutrient) => {
-                        obj[nutrient.id] = nutrient;
+                searchResults = data.list.item
+                    .reduce((obj, foodItem) => {
+                        obj[foodItem.ndbno] = foodItem;
                         return obj
                     }, {});
                 dispatch({
                     type: SEARCH_FOR_FOODS_BY_STRING,
-                    latestFoodList:  searchResults,
+                    latestFoodList:  data.list.item,
+                    latestFoodMap: searchResults,
                     latestQueryBroughtBackNoFoodList: false,
                     latestFoodListQueryString: searchString 
                   });
@@ -61,6 +61,7 @@ export const searchForFoodsByString = (searchString, isStandardReference) => (di
                 dispatch({
                     type: SEARCH_FOR_FOODS_BY_STRING,
                     latestFoodList:  [],
+                    latestFoodMap: {},
                     latestQueryBroughtBackNoFoodList: true,
                     latestFoodListQueryString: searchString 
                   });

@@ -4,12 +4,13 @@ import {
 import { createSelector } from 'reselect';
 
 const food = 
-(state = {latestFoodList:[], latestQueryBroughtBackNoFoodList: true, latestFoodListQueryString: '' }, action) => {
+(state = {latestFoodList:[], latestFoodMap: {}, latestQueryBroughtBackNoFoodList: true, latestFoodListQueryString: '' }, action) => {
   switch (action.type) {
     case SEARCH_FOR_FOODS_BY_STRING:
     return {
       ...state,
       latestFoodList: action.latestFoodList,
+      latestFoodMap: action.latestFoodMap,
       latestQueryBroughtBackNoFoodList: action.latestQueryBroughtBackNoFoodList,
       latestFoodListQueryString: action.latestFoodListQueryString
 };
