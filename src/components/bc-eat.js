@@ -29,7 +29,7 @@ import '@polymer/iron-form/iron-form.js';
 import '@polymer/paper-styles/color.js';
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
 import '@polymer/paper-dialog/paper-dialog.js';
-//import '../../node_modules/web-animations-js/web-animations.min.js';
+//import '../../node_modules/web-animations-js/web-animations-next-lite.min.js';
 import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
 //import '@polymer/iron-input/iron-input.js';
 // Elements needed by this element
@@ -103,13 +103,13 @@ class BcEat extends connect(store)(PageViewElement) {
                 @checked-changed="${e => this._standardReferenceModified(e)}">
                     (Only Search Generic Food List)
                 </paper-toggle-button>
-                <paper-dropdown-menu @iron-select="_foodSelectionMenuIronSelectHandler" required="" 
+                <paper-dropdown-menu @iron-select="${this._foodSelectionMenuIronSelectHandler}" required="" 
                 style="width:100%;" label="2. Pick a specific food" id="foodSelectionMenu" 
                 vertical-align="bottom" horizontal-align="left">
                     <div id="foodSelectionDropdownContentId" class="dropdown-content" slot="dropdown-content" style="width: 75vw; height: 72vh; ">
-                        <iron-list id="foodFluidIronList" items="[[_foodsChanged(foods.*)]]" @selected-item-changed="modifySelectedFood()" selection-enabled="">
+                        <iron-list id="foodFluidIronList" .items="${this._latestFoodList}" @selected-item-changed="${e => this._foodSelectionModified(e)}" selection-enabled="">
                             <template>
-                                <div @click="_foodFluidItemToggled" tabindex="[[tabIndex]]" class="[[_computedClass(selected)]]">[[item.name]]</div>
+                                <div @click="${e => this._foodFluidItemToggled(e)}" tabindex="[[tabIndex]]" class="${this._computedFoodListItemClass}">[[item.name]]</div>
                             </template>
                         </iron-list>
                     </div>
@@ -144,7 +144,8 @@ class BcEat extends connect(store)(PageViewElement) {
         return {
             _foodFluidSearchString: { type: String },
             _isStandardReference: { type: Boolean, value: true },
-            _latestFoodList: { type: Array }
+            _latestFoodList: { type: Array },
+            _computedFoodListItemClass: { type: String }
         }
     }
 
@@ -153,6 +154,39 @@ class BcEat extends connect(store)(PageViewElement) {
         this._latestFoodList = state.food.latestFoodList;
     }
 
+    firstUpdated() {
+        this._foodList = this.shadowRoot.querySelector('#foodFluidIronList');
+    }
+
+    _foodListItemClickHandler(e) {
+        console.info("food list item click handler has this event", this._foodList.modelForElement(e.target).item);
+    }
+
+    _foodSelectionModified(e) {
+        console.info("food selection modified event", e);
+        //this.selectedFood = e.???;
+    }
+
+    _computedClass(isSelected) {
+        var classes = 'item';
+        if (isSelected) {
+            classes += ' selected';
+        }
+        return classes;
+    }
+
+    _foodFluidItemToggled(e) {
+        console.info("food fluid item toggled event", e);
+        if (this.selectedFood !== null) {
+            this.shadowRoot.querySelector('#foodSelectionDropdownContentId')
+            .dispatchEvent(new CustomEvent('iron-select', 
+            { bubbles: true, composed: true, detail: { item: e.currentTarget /*this.selectedFood*/ } }));
+            this._computedFoodListItemClass = "item selected";
+        }
+        else {
+            this._computedFoodListItemClass = "item";
+        }
+      }
 
     _modifyFoodFluidSearchString(e) {
         console.info("made it to modifyFoodFluidSearchString", e);
@@ -165,6 +199,10 @@ class BcEat extends connect(store)(PageViewElement) {
         this.inputElement.inputElement.select();
     }
 
+    _foodSelectionMenuIronSelectHandler(e) {
+        console.debug("in _foodSelectionMenuIronSelectHandler: ", e);
+    }
+  
     _getFoodData(e) {
         console.info("_getFoodData reached", e);
         if (this._foodFluidSearchString && this._foodFluidSearchString !== '') {
