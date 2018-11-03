@@ -29,7 +29,8 @@ import '@polymer/iron-form/iron-form.js';
 import '@polymer/paper-styles/color.js';
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
 import '@polymer/paper-dialog/paper-dialog.js';
-//import '../../node_modules/web-animations-js/web-animations-next-lite.min.js';
+// The following does not work (see https://stackoverflow.com/questions/52193786/polymer-3-0-uncaught-reference-error-on-paper-drop-down-click):  
+//import 'web-animations-js/web-animations-next-lite.min.js'; // must be done in index.html with polymer.json and package.json entries.
 import '@vaadin/vaadin-date-picker/vaadin-date-picker.js';
 //import '@polymer/iron-input/iron-input.js';
 // Elements needed by this element
