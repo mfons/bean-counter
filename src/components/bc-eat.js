@@ -52,12 +52,12 @@ class BcEat extends connect(store)(PageViewElement) {
         return html`
       ${SharedStyles}
       <style >
-                .item.selected {
+                .item.true {
                     background: black;
                     color: white;
                 }
 
-                .item {
+                .item, .item.false {
                     background: white;
                     padding: 10px;
                     border-bottom: 1px solid #ccc;
@@ -108,9 +108,12 @@ class BcEat extends connect(store)(PageViewElement) {
                 style="width:100%;" label="2. Pick a specific food" id="foodSelectionMenu" 
                 vertical-align="bottom" horizontal-align="left">
                     <div id="foodSelectionDropdownContentId" class="dropdown-content" slot="dropdown-content" style="width: 75vw; height: 72vh; ">
-                        <iron-list id="foodFluidIronList" .items="${this._latestFoodList}" @selected-item-changed="${e => this._foodSelectionModified(e)}" selection-enabled="">
+                        <iron-list id="foodFluidIronList" .items="${this._latestFoodList}" 
+                        @selected-item-changed="${e => this._foodSelectionModified(e)}" 
+                        @click="${e => this._foodFluidItemToggled(e)}" selection-enabled=""
+                        multi-selection="false">
                             <template>
-                                <div @click="${e => this._foodFluidItemToggled(e)}" tabindex="[[tabIndex]]" class="${this._computedFoodListItemClass}">[[item.name]]</div>
+                                <div id="foodlistitem[[index]]" tabindex="[[tabindex]]" class$="item [[selected]]">[[item.name]]</div>
                             </template>
                         </iron-list>
                     </div>
@@ -145,8 +148,7 @@ class BcEat extends connect(store)(PageViewElement) {
         return {
             _foodFluidSearchString: { type: String },
             _isStandardReference: { type: Boolean, value: true },
-            _latestFoodList: { type: Array },
-            _computedFoodListItemClass: { type: String }
+            _latestFoodList: { type: Array }
         }
     }
 
@@ -177,15 +179,18 @@ class BcEat extends connect(store)(PageViewElement) {
     }
 
     _foodFluidItemToggled(e) {
+        const theModel = this._foodList.modelForElement(e.target);
+        const theItemElement = this.shadowRoot.querySelector("#foodlistitem" + theModel.index);
         console.info("food fluid item toggled event", e);
-        if (this.selectedFood !== null) {
+        if (theModel.selected) {
             this.shadowRoot.querySelector('#foodSelectionDropdownContentId')
             .dispatchEvent(new CustomEvent('iron-select', 
-            { bubbles: true, composed: true, detail: { item: e.currentTarget /*this.selectedFood*/ } }));
-            this._computedFoodListItemClass = "item selected";
+            { bubbles: true, composed: true, detail: { item: {...theModel.item, label: theModel.item.name } } }));
+            // TODO this does not work
+            //theItemElement.classList.add('selected');
         }
         else {
-            this._computedFoodListItemClass = "item";
+            //theItemElement.classList.remove('selected');
         }
       }
 
