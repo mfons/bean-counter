@@ -113,7 +113,7 @@ class BcEat extends connect(store)(PageViewElement) {
                         @click="${e => this._foodFluidItemToggled(e)}" selection-enabled=""
                         multi-selection="false">
                             <template>
-                                <div id="foodlistitem[[index]]" tabindex="[[tabindex]]" class$="item [[selected]]">[[item.name]]</div>
+                                <div tabindex="[[tabindex]]" class$="item [[selected]]">[[item.name]]</div>
                             </template>
                         </iron-list>
                     </div>
@@ -180,17 +180,13 @@ class BcEat extends connect(store)(PageViewElement) {
 
     _foodFluidItemToggled(e) {
         const theModel = this._foodList.modelForElement(e.target);
-        const theItemElement = this.shadowRoot.querySelector("#foodlistitem" + theModel.index);
         console.info("food fluid item toggled event", e);
         if (theModel.selected) {
             this.shadowRoot.querySelector('#foodSelectionDropdownContentId')
             .dispatchEvent(new CustomEvent('iron-select', 
             { bubbles: true, composed: true, detail: { item: {...theModel.item, label: theModel.item.name } } }));
-            // TODO this does not work
-            //theItemElement.classList.add('selected');
         }
         else {
-            //theItemElement.classList.remove('selected');
         }
       }
 
