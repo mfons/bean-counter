@@ -21,7 +21,8 @@ const food =
       latestFoodNutrientsList: action.latestFoodNutrientsList,
       latestFoodNutrientsMap: action.latestFoodNutrientsMap,
       latestQueryBroughtBackNoFoodNutrientsList: action.latestQueryBroughtBackNoFoodNutrientsList,
-      latestFoodNutrientsNdbno: action.latestFoodNutrientsNdbno
+      latestFoodNutrientsNdbno: action.latestFoodNutrientsNdbno,
+      latestFoodNutrientInfo: action.latestFoodNutrientInfo
     };
     default:
       return state;

@@ -1,6 +1,7 @@
 import { html } from '@polymer/lit-element';
 import { PageViewElement } from './page-view-element.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
+import '@webcomponents/shadycss/entrypoints/apply-shim.js';
 
 // This element is connected to the Redux store.
 import { store } from '../store.js';
@@ -53,6 +54,10 @@ class BcEat extends connect(store)(PageViewElement) {
         return html`
       ${SharedStyles}
       <style >
+                .horizontal {
+                    @apply --layout-horizontal;
+                }
+
                 .item.true {
                     background: black;
                     color: white;
@@ -120,8 +125,8 @@ class BcEat extends connect(store)(PageViewElement) {
                     </div>
                 </paper-dropdown-menu>
                 <div class="horizontal">
-                    <paper-input name="measure" label="(Serving size)" readonly="true" value="${this._latestSelectedFoodItem ? this._latestSelectedFoodItem.measure : ''}"></paper-input>
-                    <paper-input class="gram-weight-field" name="weight" label="(Weight (g))" readonly="true" value="${this._latestSelectedFoodItem ? this._latestSelectedFoodItem.weight : ''}"></paper-input>
+                    <paper-input name="measure" label="(Serving size)" readonly="true" value="${this._latestFoodNutrientInfo ? this._latestFoodNutrientInfo.measure : ''}"></paper-input>
+                    <paper-input class="gram-weight-field" name="weight" label="(Weight (g))" readonly="true" value="${this._latestFoodNutrientInfo ? this._latestFoodNutrientInfo.weight : ''}"></paper-input>
                 </div>
                 <div class="horizontal">
                     <paper-input id="multiplierFieldId" name="multiplier" @click="_onMultiplierTap" 
@@ -152,7 +157,8 @@ class BcEat extends connect(store)(PageViewElement) {
             _latestFoodList: { type: Array },
             _nutrientsOfInterest: { type: Array },
             _foodNutrients: { type: Array },
-            _latestSelectedFoodItem: { type: Object }
+            _latestSelectedFoodItem: { type: Object },
+            _latestFoodNutrientInfo: { type: Object }
         }
     }
 
@@ -161,6 +167,7 @@ class BcEat extends connect(store)(PageViewElement) {
         this._latestFoodList = state.food.latestFoodList;
         this._nutrientsOfInterest = state.nutrientsOfInterest.nutrientsOfInterest;
         this._foodNutrients = state.food.latestFoodNutrientsList;
+        this._latestFoodNutrientInfo = state.food.latestFoodNutrientInfo;
     }
 
     firstUpdated() {

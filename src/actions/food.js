@@ -90,7 +90,14 @@ const _goGetNutrientsForAFood = (ndbno, nutrientsOfInterest) => {
         "nutrients": nutrientsOfInterest, 
         "ndbno": ndbno};
     Object.keys(params)
-        .forEach(key => url.searchParams.append(key, params[key]));
+        .forEach(key => {
+            if (key === "nutrients") {
+                params[key].forEach(item => url.searchParams.append(key, item));
+            }
+            else {
+                url.searchParams.append(key, params[key]);
+            }
+        });
 
     return fetch(url /*,myInit*/).then((response) => {
         if (response.ok) {
@@ -105,19 +112,20 @@ export const getNutrientsForAFood = (ndbno, nutrientsOfInterest) => (dispatch, g
         .then((data) => {
             console.log("actions/food.js::getNutrientsForAFood() data was: ", data);
             let foodNutrientsMap = {};
-            if (data.list  && data.list.item) {
+            if (data.report  && data.report.foods) {
                 // You could reformat the data in the right format as well:
-                foodNutrientsMap = data.list.item
-                    .reduce((obj, foodItem) => {
-                        obj[foodItem.ndbno] = foodItem;
+                foodNutrientsMap = data.report.foods[0].nutrients
+                    .reduce((obj, foodNutrientsItem) => {
+                        obj[foodNutrientsItem.nutrient_id] = foodNutrientsItem;
                         return obj
                     }, {});
                 dispatch({
                     type: GET_NUTRIENTS_FOR_A_FOOD,
-                    latestFoodNutrientsList:  data.list.item,
+                    latestFoodNutrientsList:  data.report.foods[0].nutrients,
                     latestFoodNutrientsMap: foodNutrientsMap,
                     latestQueryBroughtBackNoFoodNutrientsList: false,
-                    latestFoodNutrientsNdbno: ndbno 
+                    latestFoodNutrientsNdbno: ndbno ,
+                    latestFoodNutrientInfo: data.report.foods[0]
                   });
             }
             else if (typeof data.errors !== "undefined" && data.errors.error[0].status === 400) {
@@ -126,7 +134,8 @@ export const getNutrientsForAFood = (ndbno, nutrientsOfInterest) => (dispatch, g
                     latestFoodNutrientsList:  [],
                     latestFoodNutrientsMap: {},
                     latestQueryBroughtBackNoFoodNutrientsList: true,
-                    latestFoodNutrientsNdbno: ndbno 
+                    latestFoodNutrientsNdbno: ndbno,
+                    latestFoodNutrientInfo: {}
                   });
             }
         })
