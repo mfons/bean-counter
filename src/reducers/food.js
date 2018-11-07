@@ -1,5 +1,6 @@
 import { 
-    SEARCH_FOR_FOODS_BY_STRING
+    SEARCH_FOR_FOODS_BY_STRING,
+    GET_NUTRIENTS_FOR_A_FOOD
 } from '../actions/food.js';
 import { createSelector } from 'reselect';
 
@@ -13,7 +14,15 @@ const food =
       latestFoodMap: action.latestFoodMap,
       latestQueryBroughtBackNoFoodList: action.latestQueryBroughtBackNoFoodList,
       latestFoodListQueryString: action.latestFoodListQueryString
-};
+    };
+    case GET_NUTRIENTS_FOR_A_FOOD:
+    return {
+      ...state,
+      latestFoodNutrientsList: action.latestFoodNutrientsList,
+      latestFoodNutrientsMap: action.latestFoodNutrientsMap,
+      latestQueryBroughtBackNoFoodNutrientsList: action.latestQueryBroughtBackNoFoodNutrientsList,
+      latestFoodNutrientsNdbno: action.latestFoodNutrientsNdbno
+    };
     default:
       return state;
   }

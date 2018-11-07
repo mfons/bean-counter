@@ -7,7 +7,8 @@ import { store } from '../store.js';
 
 // These are the actions needed by this element.
 import { 
-    searchForFoodsByString 
+    searchForFoodsByString,
+    getNutrientsForAFood 
 } from '../actions/food.js';
 
 // These are the shared styles needed by this element.
@@ -119,8 +120,8 @@ class BcEat extends connect(store)(PageViewElement) {
                     </div>
                 </paper-dropdown-menu>
                 <div class="horizontal">
-                    <paper-input name="measure" label="(Serving size)" readonly="true" value="[[_getMeasure(foodNutrients.*)]]"></paper-input>
-                    <paper-input class="gram-weight-field" name="weight" label="(Weight (g))" readonly="true" value="[[_getWeight(foodNutrients.*)]]"></paper-input>
+                    <paper-input name="measure" label="(Serving size)" readonly="true" value="${this._latestSelectedFoodItem ? this._latestSelectedFoodItem.measure : ''}"></paper-input>
+                    <paper-input class="gram-weight-field" name="weight" label="(Weight (g))" readonly="true" value="${this._latestSelectedFoodItem ? this._latestSelectedFoodItem.weight : ''}"></paper-input>
                 </div>
                 <div class="horizontal">
                     <paper-input id="multiplierFieldId" name="multiplier" @click="_onMultiplierTap" 
@@ -148,13 +149,18 @@ class BcEat extends connect(store)(PageViewElement) {
         return {
             _foodFluidSearchString: { type: String },
             _isStandardReference: { type: Boolean, value: true },
-            _latestFoodList: { type: Array }
+            _latestFoodList: { type: Array },
+            _nutrientsOfInterest: { type: Array },
+            _foodNutrients: { type: Array },
+            _latestSelectedFoodItem: { type: Object }
         }
     }
 
     // This is called every time something is updated in the store.
     _stateChanged(state) {
         this._latestFoodList = state.food.latestFoodList;
+        this._nutrientsOfInterest = state.nutrientsOfInterest.nutrientsOfInterest;
+        this._foodNutrients = state.food.latestFoodNutrientsList;
     }
 
     firstUpdated() {
@@ -185,6 +191,8 @@ class BcEat extends connect(store)(PageViewElement) {
             this.shadowRoot.querySelector('#foodSelectionDropdownContentId')
             .dispatchEvent(new CustomEvent('iron-select', 
             { bubbles: true, composed: true, detail: { item: {...theModel.item, label: theModel.item.name } } }));
+            store.dispatch(getNutrientsForAFood(theModel.item.ndbno, this._nutrientsOfInterest));
+            this._latestSelectedFoodItem = theModel.item;
         }
         else {
         }
